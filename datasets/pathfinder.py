@@ -38,9 +38,9 @@ for diff_level in ["curv_baseline", "curv_contour_length_9", "curv_contour_lengt
     dev = ds_list[bp80:bp90]
     test = ds_list[bp90:]
 
-    with open(f"{subdir}-{diff_level}.train.pickle", "wb") as f:
+    with open(f"{subdir}_{diff_level}.train.pickle", "wb") as f:
         pickle.dump(train, f)
-    with open(f"{subdir}-{diff_level}.dev.pickle", "wb") as f:
+    with open(f"{subdir}_{diff_level}.dev.pickle", "wb") as f:
         pickle.dump(dev, f)
-    with open(f"{subdir}-{diff_level}.test.pickle", "wb") as f:
+    with open(f"{subdir}_{diff_level}.test.pickle", "wb") as f:
         pickle.dump(test, f)

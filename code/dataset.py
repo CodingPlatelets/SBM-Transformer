@@ -17,7 +17,7 @@ class LRADataset(Dataset):
             self.examples = pickle.load(f)
             random.shuffle(self.examples)
             self.curr_idx = 0
-            
+
         print(f"Loaded {file_path}... size={len(self.examples)}", flush = True)
 
     def __len__(self):
@@ -35,15 +35,15 @@ class LRADataset(Dataset):
             output["mask_1"] = (output["input_ids_1"] != 0).float()
         output["label"] = torch.tensor(inst["label"], dtype = torch.long)
         return output
-    
+
     def __getitem__(self, i):
         if not self.endless:
             return self.create_inst(self.examples[i])
-        
+
         if self.curr_idx >= len(self.examples):
             random.shuffle(self.examples)
             self.curr_idx = 0
         inst = self.examples[self.curr_idx]
         self.curr_idx += 1
-        
+
         return self.create_inst(inst)

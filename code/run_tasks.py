@@ -78,9 +78,9 @@ model = nn.DataParallel(model, device_ids = device_ids)
 
 
 ds_iter = {
-    "train":enumerate(DataLoader(LRADataset(f"../datasets/{task}.train.pickle", True), batch_size = training_config["batch_size"], drop_last = True)),
-    "dev":enumerate(DataLoader(LRADataset(f"../datasets/{task}.dev.pickle", True), batch_size = training_config["batch_size"], drop_last = True)),
-    "test":enumerate(DataLoader(LRADataset(f"../datasets/{task}.test.pickle", False), batch_size = training_config["batch_size"], drop_last = True)),
+    "train":enumerate(DataLoader(LRADataset(f"../datasets/{task}/{task}.train.pickle", True), batch_size = training_config["batch_size"], drop_last = True)),
+    "dev":enumerate(DataLoader(LRADataset(f"../datasets/{task}/{task}.dev.pickle", True), batch_size = training_config["batch_size"], drop_last = True)),
+    "test":enumerate(DataLoader(LRADataset(f"../datasets/{task}/{task}.test.pickle", False), batch_size = training_config["batch_size"], drop_last = True)),
 }
 
 
